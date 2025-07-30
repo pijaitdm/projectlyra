@@ -20,7 +20,7 @@ void buat_folder(){
     std::cout << "buat file baru -- > " << folder << std::endl;
     }
 }
-//cek fileada atau tidak
+//cek file ada atau tidak
 void c_file(){
   std::string cek_file = "2025.csv";
     if(!std::filesystem::exists(cek_file)){
