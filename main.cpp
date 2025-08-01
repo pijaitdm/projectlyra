@@ -24,9 +24,16 @@ do{
         std::cout << "menu 2 \n";
         break;
         
-      default:
+      case 3:
+        std::cout << "menu 3 \n";
+        break;
+      
+      case 5:
         system("clear");
-        menu();
+        break;
+        
+      default:
+        std::cout << "Pilihan tidak valid.\n";
         break;
         
       case 0:
