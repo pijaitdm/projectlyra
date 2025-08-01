@@ -39,6 +39,10 @@ std::string bulan = input_bulan();
 std::ofstream file("lib/2025.csv", std::ios::app);
 if(file.is_open()){
   file << bulan << ",";
+  if (bulan.empty()) {
+    std::cout << "data tidak disimpan,\nkembali ke menu\n";
+    return; // atau break kalau di dalam loop
+}
   file << userInput("Masukan UE : ") << std::endl;
   file.close();
   std::cout << bulan << " berhasil ditambahkan \n";
