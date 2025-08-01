@@ -30,6 +30,7 @@ do{
       
       case 5:
         system("clear");
+        menu();
         break;
         
       default:
