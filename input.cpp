@@ -38,7 +38,8 @@ std::string input_bulan() {
         if (std::find(bulan.begin(), bulan.end(), input_bulan_str) != bulan.end()) {
             return input_bulan_str;
         } else {
-            std::cout << "Bulan tidak valid. Silakan coba lagi.\n";
-        }
+            std::cout << "Bulan tidak valid\n";
+            return "";
+        }      
     }
 }
