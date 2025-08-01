@@ -27,7 +27,7 @@ void c_file(){
       std::ofstream file(cek_file);
       std::cout << cek_file << " file berhasil dibuat \n";
     }
-    else{ std::cout << "++ 2025 ++ \n \n";}
+    else{ std::cout << "Membuka File "<< cek_file << std::endl;}
 }
 
 
