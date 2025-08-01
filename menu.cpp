@@ -14,13 +14,10 @@ void batas() {
 void drawBox(const std::string& text) {
     int width = text.length() + 4;
     std::string horizontal = "═";
-
     std::cout << "╔";
     for (int i = 0; i < width; ++i) std::cout << horizontal;
     std::cout << "╗" << std::endl;
-
     std::cout << "║  " << text << "  ║" << std::endl;
-
     std::cout << "╚";
     for (int i = 0; i < width; ++i) std::cout << horizontal;
     std::cout << "╝" << std::endl;
