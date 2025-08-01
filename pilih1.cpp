@@ -22,7 +22,7 @@ void buat_folder(){
 }
 //cek file ada atau tidak
 void c_file(){
-  std::string cek_file = "2025.csv";
+  std::string cek_file = "lib/2025.csv";
     if(!std::filesystem::exists(cek_file)){
       std::ofstream file(cek_file);
       std::cout << cek_file << " file berhasil dibuat \n";
@@ -34,20 +34,13 @@ void c_file(){
    
 void pilihan1() {
 buat_folder(); c_file();// untuk membuat folder dan file  csv
-
-    std::string input_bulan;
-    std::cout << " **UPDATE UE LCR ***\n";
-    std::cout << "Masukan Bulan: ";
-    std::cin >> input_bulan;
-    std::cout << "-------------------------\n"<< std::endl;
-    
-    
-
-    std::string pilih_bulan = tambah_bulan(input_bulan);
-    if (pilih_bulan.empty()) {
-        std::cout << "Kembali ke menu.\n";
-        return;
-    }
-    // lanjut proses di sini, karena bulan sudah valid
+std::string bulan = input_bulan();
+//membuat isi update
+std::ofstream file("lib/2025.csv", std::ios::app);
+if(file.is_open()){
+  file << bulan << ",";
+  file << userInput("Masukan UE : ") << std::endl;
+  file.close();
+  std::cout << bulan << " berhasil ditambahkan \n";
 }
-
+}
