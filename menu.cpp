@@ -28,11 +28,10 @@ void drawBox(const std::string& text) {
 
 void pilih_menu() {
     std::vector<std::string> menu_arr = {
-        "1. Input UE LCR",
-        "2. Lihat Laporan",
-        "3. Update/Hapus",
-        "4. Refresh Menu",
-        "0. Keluar"
+    "[1] Input UE LCR",
+    "[2] Lihat / Update / Hapus Laporan",
+    "[5] Refresh Menu",
+    "[0] Keluar"
     };
     for (const auto& item : menu_arr)
         std::cout << item << std::endl;
@@ -42,5 +41,5 @@ void menu() {
     drawBox("Project LYRA LCR");
     batas();
     pilih_menu();
-    batas();  
+    batas();
 }
