@@ -2,6 +2,19 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <filesystem>
+
+// tahun 
+std::string tahun(){
+std::string folder_tahun = "2025";
+return folder_tahun;
+}
+
+// folder lib
+std::string lib(){
+std::string folder_lib = "lib/";
+return folder_lib;
+}
 
 int userInput(const std::string& pesan){
     while(true){
@@ -18,6 +31,15 @@ int userInput(const std::string& pesan){
         }
     }
 }
+
+std::string inputan(const std::string& pesan) {
+    std::string user_input;
+    std::cout << pesan;
+    std::getline(std::cin >> std::ws, user_input);  // menangkap input dengan spasi
+
+    return user_input;
+}
+
 
 std::string input_bulan() {
     std::string input_bulan_str;
@@ -38,8 +60,10 @@ std::string input_bulan() {
         if (std::find(bulan.begin(), bulan.end(), input_bulan_str) != bulan.end()) {
             return input_bulan_str;
         } else {
-            std::cout << "Bulan tidak valid\n";
+            std::cout << "Bulan tidak valid !!\n";
             return "";
         }      
     }
 }
+
+
