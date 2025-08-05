@@ -23,20 +23,19 @@ void c_file(){
    
 void pilihan1() {
 c_file();// untuk membuat folder dan file  csv
-std::string bulan = input_bulan();
+std::string moon  = validasi_bulan();
+std::string lanjut;
+do{
 //membuat isi update
 std::ofstream file("lib/2025.csv", std::ios::app);
-if(file.is_open()){
-  if (bulan.empty()) {
-    std::cout << "data tidak disimpan,\nkembali ke menu\n";
-    file.close();
-    return; // atau break kalau di dalam loop
-}
   //menambah bulan
-  file << bulan << ",";
+  file << moon << ",";
   // menginput UE
   file << userInput("Masukan UE : ") << std::endl;
   file.close();
-  std::cout << bulan << " berhasil ditambahkan \n";
+  std::cout << moon << " berhasil ditambahkan \n";
+  std::cout << "lanjut tekan [1] : ";
+  std::cin >> lanjut;
 }
+while(lanjut != "1");
 }
