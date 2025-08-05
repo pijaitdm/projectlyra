@@ -32,7 +32,7 @@ std::string bulan = validasi_bulan();
 buat_folder_bulan = tambah_tahun() +"/"+ bulan;
 if(!std::filesystem::exists(buat_folder_bulan) && !std::filesystem::is_directory(buat_folder_bulan)){
   std::filesystem::create_directories(buat_folder_bulan);
-  std::cout << validasi_bulan() << " berhasil dibuat \n";}
+  std::cout << bulan << " berhasil dibuat \n";}
 return buat_folder_bulan;
 }
 
