@@ -49,7 +49,7 @@ std::string input_bulan() {
     };
 
     while (true) {
-        std::cout << "Masukan Bulan: ";
+        std::cout << "Bulan: ";
         std::cin >> input_bulan_str;
 
         // Mengubah input menjadi huruf kecil untuk perbandingan yang tidak case-sensitive
@@ -67,3 +67,10 @@ std::string input_bulan() {
 }
 
 
+std::string validasi_bulan(){
+std::string bulan; 
+do{
+bulan = input_bulan();
+}while(bulan.empty());
+return bulan;
+}
