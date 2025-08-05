@@ -8,18 +8,7 @@
 
 //buat file baru
 
-void buat_folder(){
-//Buat file jika belum ada
-    std::string folder = "lib/";
 
-    if(std::filesystem::exists(folder) && std::filesystem::is_directory(folder)) {
-    std::cout << "------------------------ \n" << std::endl;
-    } 
-    else{
-    std::filesystem::create_directories(folder);
-    std::cout << "buat file baru -- > " << folder << std::endl;
-    }
-}
 //cek file ada atau tidak
 void c_file(){
   std::string cek_file = "lib/2025.csv";
@@ -33,7 +22,7 @@ void c_file(){
 
    
 void pilihan1() {
-buat_folder(); c_file();// untuk membuat folder dan file  csv
+c_file();// untuk membuat folder dan file  csv
 std::string bulan = input_bulan();
 //membuat isi update
 std::ofstream file("lib/2025.csv", std::ios::app);
