@@ -19,7 +19,7 @@ void c_folder(){
   std::string folder = folder_lcr();
   std::string laporan_lcr = folder +"/"+ get_tahun_sekarang();
   std::filesystem::create_directory(folder);
-    if(!std::filesystem::exists(folder)){
+    if(!std::filesystem::exists(laporan_lcr)){
       std::ofstream file(laporan_lcr);
       std::cout << " file berhasil dibuat \n";
     }
