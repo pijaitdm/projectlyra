@@ -8,26 +8,9 @@
 #include "folder.hpp"
 #include <ctime> // untuk fungsi waktu
 
-std::string get_tahun_sekarang() {
-    time_t t = time(nullptr);
-    tm* waktu = localtime(&t);
-    int tahun = waktu->tm_year + 1900; // tm_year adalah jumlah tahun sejak 1900
-    return std::to_string(tahun);
-}
-
-void c_folder(){
-  std::string folder = folder_lcr();
-  std::string laporan_lcr = folder +"/"+ get_tahun_sekarang();
-  std::filesystem::create_directory(folder);
-    if(!std::filesystem::exists(laporan_lcr)){
-      std::ofstream file(laporan_lcr);
-      std::cout << " file berhasil dibuat \n";
-    }
-    else{ std::cout << "Membuka File -- > "<<laporan_lcr << std::endl;}
-}
 
 void pilihan1() {
-c_folder();// untuk membuat folder dan file  csv
+std::cout << "Membuka file --> " << c_folder() << std::endl;// untuk membuat folder dan file  csv
 std::string lanjut;
 std::string file_csv = folder_lcr();
 
