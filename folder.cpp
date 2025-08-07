@@ -2,10 +2,19 @@
 #include <string>
 #include <vector>
 #include <filesystem>
+#include <fstream>
+#include <sstream>
 
 std::string folder_lcr(){
 const std::string file_path = "lib/LCR";
 return file_path;
+}
+
+std::string get_tahun_sekarang() {
+    time_t t = time(nullptr);
+    tm* waktu = localtime(&t);
+    int tahun = waktu->tm_year + 1900; // tm_year adalah jumlah tahun sejak 1900
+    return std::to_string(tahun);
 }
 
 
@@ -21,6 +30,22 @@ std::string buat_folder_bertingkat(const std::vector<std::string>& tingkat) {
         }
     }
     return path;
+}
+
+//cek folder
+std::string c_folder(){
+  std::string folder = folder_lcr();
+  std::string laporan_lcr = folder +"/"+ get_tahun_sekarang()+".csv";
+  
+  if(!std::filesystem::exists(folder)){
+  std::filesystem::create_directory(folder);
+  }
+  
+    if(!std::filesystem::exists(laporan_lcr)){
+      std::ofstream file(laporan_lcr);
+      std::cout << laporan_lcr << " file berhasil dibuat \n";
+    }
+  return laporan_lcr;
 }
 
 
