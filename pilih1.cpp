@@ -16,7 +16,7 @@ std::string file_csv = c_folder ();
 
 do{
   std::ofstream file(file_csv, std::ios::app);
-  std::string moon  = validasi_bulan();
+  std::string moon  = input_bulan();
   if(moon.empty()){
     std::cout << " dibatalkan kembali  ke menu \n";
     file.close();
