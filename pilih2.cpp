@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <filesystem>
 #include "input.hpp"
 #include "folder.hpp"
 
@@ -20,8 +21,6 @@ void pilihan2() {
     std::string folder_path = buat_folder_bertingkat(tingkat);
     
     if (std::filesystem::exists(folder_path)){
-    std::cout << "Folder Complete : " << folder_path << std::endl;
+    std::cout << "Membuka --> " << folder_path << std::endl;
     }
-    else { std::cout << "gagal membuat file !! \n";}
-    std::cout << "-----------------------------\n";
 }
