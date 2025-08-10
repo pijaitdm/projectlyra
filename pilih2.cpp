@@ -13,8 +13,8 @@ void pilihan2() {
       std::cout << "Kembali ke menu \n";
       return;
     }
-    const std::string tempat = inputan("Tempat : ");
-    const std::string tanggal = inputan("Tanggal : ");
+    std::string tempat = inputan("Tempat : ");
+    std::string tanggal = inputan("Tanggal : ");
 
     // Gabungkan semua input sebagai tingkat folder
     std::vector<std::string> tingkat = {lib(), tahun_folder, bulan, tempat, tanggal};
