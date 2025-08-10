@@ -5,6 +5,8 @@
 #include <cstdlib>
 #include "input.hpp"
 #include "pilih1.hpp"
+#include "pilih2.hpp"
+#include "pilih3.hpp"
 
 int main () {
 
@@ -21,11 +23,17 @@ do{
         break;
         
       case 2:
-        std::cout << "menu 2 \n";
+        system("clear");
+        std::cout << "Menu 2 - Input UE Pos \n";
+        pilihan2();
+        menu();
         break;
         
       case 3:
+        system("clear");
         std::cout << "menu 3 \n";
+        pilihan3();
+        menu();
         break;
       
       case 5:
