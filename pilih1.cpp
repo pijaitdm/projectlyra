@@ -22,7 +22,7 @@ do{
     file.close();
     return;
   }
-  const int input_ue = userInput("Masukan UE : ");
+  int input_ue = userInput("Masukan UE : ");
   std::cout << "simpan dan lanjut tekan [1], kembali ke menu [0,,,] : ";
   std::cin >> lanjut;
   if (lanjut == "1"){
