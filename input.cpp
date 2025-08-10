@@ -65,10 +65,3 @@ std::string input_bulan() {
         }      
     }
 }
-
-
-std::string validasi_bulan(){
-std::string bulan; 
-bulan = input_bulan();
-return bulan;
-}
