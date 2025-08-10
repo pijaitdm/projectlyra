@@ -5,13 +5,13 @@
 #include <filesystem>
 
 // tahun 
-std::string tahun(){
+const std::string tahun(){
 std::string folder_tahun = "2025";
 return folder_tahun;
 }
 
 // folder lib
-std::string lib(){
+const std::string lib(){
 std::string folder_lib = "lib/";
 return folder_lib;
 }
