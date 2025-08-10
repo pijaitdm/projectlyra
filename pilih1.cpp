@@ -13,9 +13,9 @@ void pilihan1() {
 std::string file_csv = c_folder ();
 std::cout << "Membuka file --> " << file_csv << std::endl;// untuk membuat folder dan file  csv
 std::string lanjut;
+std::ofstream file(file_csv, std::ios::app);
 
 do{
-  std::ofstream file(file_csv, std::ios::app);
   std::string moon  = input_bulan();
   if(moon.empty()){
     std::cout << " dibatalkan kembali  ke menu \n";
