@@ -28,10 +28,10 @@ do{
   if (lanjut == "1"){
     file << moon << "," << input_ue << std::endl;
     std::cout << moon << " = " << input_ue << " (berhasil ditambahkan) \n";
-    file.close();
   }
   
   else {std::cout << "kembali ke menu \n";}
 }
 while(lanjut != "0");
+file.close();
 }
