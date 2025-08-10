@@ -10,9 +10,9 @@
 
 
 void pilihan1() {
-std::cout << "Membuka file --> " << c_folder() << std::endl;// untuk membuat folder dan file  csv
-std::string lanjut;
 std::string file_csv = c_folder ();
+std::cout << "Membuka file --> " << file_csv << std::endl;// untuk membuat folder dan file  csv
+std::string lanjut;
 
 do{
   std::ofstream file(file_csv, std::ios::app);
