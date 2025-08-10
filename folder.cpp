@@ -34,8 +34,8 @@ std::string buat_folder_bertingkat(const std::vector<std::string>& tingkat) {
 
 //cek folder
 std::string c_folder(){
-  std::string folder = folder_lcr();
-  std::string laporan_lcr = folder +"/"+ get_tahun_sekarang()+".csv";
+  std::filesystem::path folder = folder_lcr();
+  std::filesystem::path laporan_lcr = folder +"/"+ get_tahun_sekarang()+".csv";
   
   if(!std::filesystem::exists(folder)){
   std::filesystem::create_directory(folder);
