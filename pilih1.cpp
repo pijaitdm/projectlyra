@@ -31,7 +31,7 @@ do{
   }
   
   else {
-  std::cout << moon << " & " << input_ue << " tidak tersimpan \n" << "kembali ke menu \n";
+  std::cout << moon << " : " << input_ue << " tidak tersimpan \n" << "kembali ke menu \n";
   }
 }
 while(lanjut != "0");
