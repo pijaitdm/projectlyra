@@ -64,5 +64,5 @@ pilihan = userInput("Pilih : ");
         case 0:
                 break;
   }              
-}while(!pilihan == 0);
+}while(pilihan != 0);
 }
