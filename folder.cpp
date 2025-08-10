@@ -40,12 +40,13 @@ std::string c_folder(){
   if(!std::filesystem::exists(folder)){
   std::filesystem::create_directory(folder);
   }
+  else{std::cout << "File sudah ada \n";
   
     if(!std::filesystem::exists(laporan_lcr)){
       std::ofstream file(laporan_lcr);
       std::cout << laporan_lcr << " file berhasil dibuat \n";
     }
-    else {std::cout << "gagal membuat file \n";}
+
   return laporan_lcr;
 }
 
