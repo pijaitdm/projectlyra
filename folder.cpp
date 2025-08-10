@@ -26,7 +26,7 @@ std::string buat_folder_bertingkat(const std::vector<std::string>& tingkat) {
         path += t;
         if (!std::filesystem::exists(path)) {
             std::filesystem::create_directories(path);
-            std::cout << t << " berhasil dibuat di " << path << std::endl;
+            std::cout << " berhasil dibuat di " << path << std::endl;
         }
     }
     return path;
@@ -45,6 +45,7 @@ std::string c_folder(){
       std::ofstream file(laporan_lcr);
       std::cout << laporan_lcr << " file berhasil dibuat \n";
     }
+    else {std::cout << "gagal membuat file \n";}
   return laporan_lcr;
 }
 
