@@ -7,7 +7,7 @@
 void pilihan2() {
     std::cout << " Inputan UE Visit\n";
     std::string tahun_folder = tahun(); // dari input.hpp, default "2025"
-    std::string bulan = validasi_bulan();
+    std::string bulan = input_bulan();
     if (bulan.empty()) return;
     std::string tempat = inputan("Tempat : ");
     std::string tanggal = inputan("Tanggal : ");
