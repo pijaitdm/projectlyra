@@ -6,7 +6,7 @@
 #include <sstream>
 
 std::string folder_lcr(){
-const std::string file_path = "lib/LCR";
+std::string file_path = "lib/LCR";
 return file_path;
 }
 
