@@ -8,7 +8,6 @@
 #include "folder.hpp"
 #include <ctime> // untuk fungsi waktu
 #include <vector>
-
 std::string path_lcr = c_folder();
 bool bulanSudahAda(const std::string& file_csv, const std::string& bulan) {
     std::ifstream file(path_lcr);
@@ -42,7 +41,7 @@ while(true){
   }
   
   int input_ue = userInput("Masukan UE : ");
-  std::cout << "simpan dan lanjut tekan [1], batal dan kembali ke menu [0,,,] : ";
+  std::cout << "simpan dan lanjut tekan [1], batal dan kembali ke menu utama [0,,,] : ";
   std::cin >> lanjut;
   if (lanjut == "1"){
     file << moon << "," << input_ue << std::endl;
@@ -50,7 +49,7 @@ while(true){
   }
   
   else {
-  std::cout << moon << " : " << input_ue << " (tidak tersimpan) \n" << "kembali ke menu \n";
+  std::cout << moon << " : " << input_ue << " (tidak tersimpan  !!) \n \n";
   }
   }
 
