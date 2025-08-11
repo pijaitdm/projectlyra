@@ -7,21 +7,40 @@
 #include "input.hpp"
 #include "folder.hpp"
 #include <ctime> // untuk fungsi waktu
+#include <vector>
+
+std::string path_lcr = c_folder();
+bool bulanSudahAda(const std::string& file_csv, const std::string& bulan) {
+    std::ifstream file(path_lcr);
+    std::string line;
+    while (std::getline(file, line)) {
+        std::stringstream ss(line);
+        std::string bulan_ada;
+        if (std::getline(ss, bulan_ada, ',')) {
+            if (bulan_ada == bulan) return true;
+        }
+    }
+    return false;
+}
 
 
-void pilihan1() {
-std::string file_csv = c_folder ();
-std::cout << "Membuka file --> " << file_csv << std::endl;// untuk membuat folder dan file  csv
+void pilihan1(){
+std::cout << "Membuka file --> " << path_lcr << std::endl;// untuk membuat folder dan file  csv
 std::string lanjut;
-std::ofstream file(file_csv, std::ios::app);
+std::ofstream file(path_lcr, std::ios::app);
 
-do{
+while(true){
   std::string moon  = input_bulan();
+  if (bulanSudahAda(path_lcr, moon)) {
+    std::cout << "Bulan sudah ada di file. kembali ke menu\n";
+    break;
+}
   if(moon.empty()){
     std::cout << " dibatalkan kembali  ke menu \n";
     file.close();
-    return;
+    break;
   }
+  
   int input_ue = userInput("Masukan UE : ");
   std::cout << "simpan dan lanjut tekan [1], batal dan kembali ke menu [0,,,] : ";
   std::cin >> lanjut;
@@ -31,9 +50,9 @@ do{
   }
   
   else {
-  std::cout << moon << " : " << input_ue << " tidak tersimpan \n" << "kembali ke menu \n";
+  std::cout << moon << " : " << input_ue << " (tidak tersimpan) \n" << "kembali ke menu \n";
   }
-}
-while(lanjut != "0");
+  }
+
 file.close();
 }
