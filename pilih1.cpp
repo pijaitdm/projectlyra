@@ -3,11 +3,8 @@
 #include <sstream>
 #include <filesystem>
 #include <cstdlib>
-#include "menu.hpp"
 #include "input.hpp"
 #include "folder.hpp"
-#include <ctime> // untuk fungsi waktu
-#include <vector>
 std::string path_lcr = c_folder();
 bool bulanSudahAda(const std::string& file_csv, const std::string& bulan) {
     std::ifstream file(path_lcr);
