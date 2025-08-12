@@ -9,25 +9,26 @@
 
 
 
-std::string f_lcr = c_folder();
+
 
 void menu_pilih3(){
 std::cout <<  "Menu Laporan : \n";
 std::cout <<  "[1]. Laporan Bulanan LCR \n";
 std::cout <<  "[2]. Laporan Stok alat LCR \n";
-batas();
-std::cout << f_lcr << std::endl;
-batas();
+std::cout <<  "[0]. Kembali ke menu utama \n";
 }
 
 void laporan_lcr(){
+
+std::string f_lcr = c_folder();
   std::ifstream file(f_lcr);
    if (!file.is_open()) {
         std::cerr << "Gagal membuka file!\n";
         return ;
     }
     
-std::cout << std::left << std::setw(10) << "Bulan" << " : " << "UE" <<std::endl;
+batas();    
+std::cout << std::left << std::setw(10) << "Bulan" << " | " << "UE" <<std::endl;
 std::string line;
     while (std::getline(file, line)) {
         std::stringstream ss(line);
@@ -36,13 +37,14 @@ std::string line;
         
         std::getline(ss, kolom_bulan, ',');
         std::getline (ss, kolom_angka);
-        std::cout << std::left << std::setw(10)<<kolom_bulan << " : " << kolom_angka << "\n"; //std::setw membuat sama rata
+        std::cout << std::left << std::setw(10)<<kolom_bulan << " | " << kolom_angka << "\n"; //std::setw membuat sama rata
         }
 file.close();
 }
 
 void pilihan3(){
 menu_pilih3();
+
 int pilihan;
 do{
 
