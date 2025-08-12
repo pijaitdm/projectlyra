@@ -5,9 +5,8 @@
 #include <cstdlib>
 #include "input.hpp"
 #include "folder.hpp"
-std::string path_lcr = c_folder();
 bool bulanSudahAda(const std::string& file_csv, const std::string& bulan) {
-    std::ifstream file(path_lcr);
+    std::ifstream file(file_csv);
     std::string line;
     while (std::getline(file, line)) {
         std::stringstream ss(line);
@@ -21,20 +20,19 @@ bool bulanSudahAda(const std::string& file_csv, const std::string& bulan) {
 
 
 void pilihan1(){
-std::cout << "Membuka file --> " << path_lcr << std::endl;// untuk membuat folder dan file  csv
-std::string lanjut;
-std::ofstream file(path_lcr, std::ios::app);
+const std::string path_lcr = c_folder();
 
-while(true){
+std::ofstream file(path_lcr, std::ios::app);
+std::string lanjut;
   std::string moon  = input_bulan();
   if (bulanSudahAda(path_lcr, moon)) {
     std::cout << "Bulan sudah ada di file. kembali ke menu\n";
-    break;
+    return;
 }
   if(moon.empty()){
-    std::cout << " dibatalkan kembali  ke menu \n";
+    std::cout << ",dibatalkan kembali  ke menu \n";
     file.close();
-    break;
+    return;
   }
   
   int input_ue = userInput("Masukan UE : ");
@@ -47,7 +45,6 @@ while(true){
   
   else {
   std::cout << moon << " : " << input_ue << " (tidak tersimpan  !!) \n \n";
-  }
   }
 
 file.close();
