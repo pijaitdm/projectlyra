@@ -26,7 +26,8 @@ void drawBox(const std::string& text) {
 void pilih_menu() {
     std::vector<std::string> menu_arr = {
     "[1] Input UE LCR",
-    "[2] Lihat / Update / Hapus Laporan",
+    "[2] Input UE Visit",
+    "[3] Laporan LCR",
     "[5] Refresh Menu",
     "[0] Keluar"
     };
