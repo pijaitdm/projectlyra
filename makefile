@@ -14,7 +14,6 @@ OBJS = $(SRCS:.cpp=.o)
 # Rule utama
 $(TARGET): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
-	rm -f $(OBJS)
 	@echo "✅ Build sukses --> $@"
 
 # Rule default object file
