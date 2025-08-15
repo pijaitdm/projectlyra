@@ -49,13 +49,13 @@ menu_pilih3();
 int pilihan;
 do{
 
-pilihan = userInput("Pilih : ");
+pilihan = userInput("Pilih Menu : ");
 
   switch(pilihan){
         case 1: 
                 std::cout << "Laporan Bulanan LCR \n";
                 laporan_lcr();
-                  batas();
+                batas();
                 break;
         case 2: 
                 std::cout << "Laporan Stok LCR \n";
