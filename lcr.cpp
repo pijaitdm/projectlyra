@@ -16,7 +16,7 @@ addBulan = input_bulan();
 if(addBulan.empty()){
 return "";
 }
-std::string pathStok = pathlcr + "/" + addBulan + ".csv";
+const std::string pathStok = pathlcr + "/" + addBulan + ".csv";
 
 if(!std::filesystem::exists(pathStok)){
 std::cout << "membuat ~> " << pathStok << std::endl;
