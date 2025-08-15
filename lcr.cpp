@@ -10,7 +10,7 @@
 std::string file_stok(){
 std::string addBulan;
 
-std::string pathlcr = folder_lcr();
+std::string pathlcr = folder_stok();
 
 addBulan = input_bulan();
 if(addBulan.empty()){
