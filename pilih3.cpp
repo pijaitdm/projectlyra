@@ -6,6 +6,7 @@
 #include "input.hpp"
 #include "folder.hpp"
 #include "menu.hpp"
+#include "lcr.hpp"
 
 
 
