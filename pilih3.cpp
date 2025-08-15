@@ -58,7 +58,6 @@ pilihan = userInput("Pilih : ");
                   batas();
                 break;
         case 2: 
-                
                 std::cout << "Laporan Stok LCR \n";
                 break;
         case 3:
