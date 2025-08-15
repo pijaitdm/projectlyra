@@ -14,6 +14,7 @@ OBJS = $(SRCS:.cpp=.o)
 # Rule utama
 $(TARGET): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
+	rm -f $(OBJS)   # hapus semua file .o setelah linking
 
 # Rule default object file
 %.o: %.cpp
@@ -22,4 +23,3 @@ $(TARGET): $(OBJS)
 # Bersihkan file object dan executable
 clean:
 	rm -f $(OBJS) $(TARGET)
-
