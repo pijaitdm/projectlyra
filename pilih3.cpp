@@ -62,6 +62,7 @@ pilihan = userInput("Pilih Menu : ");
                 break;
         case 3:
                 std::cout << "Tambah Stok Alat LCR \n";
+                lcr();
                 break;
         default:
                 std::cout << "Pilihan tidak valid \n";
