@@ -15,6 +15,7 @@ void menu_pilih3(){
 std::cout <<  "Menu Laporan : \n";
 std::cout <<  "[1]. Laporan Bulanan LCR \n";
 std::cout <<  "[2]. Laporan Stok alat LCR \n";
+std::cout <<  "[3]. Tambah Stok alat LCR \n";
 std::cout <<  "[0]. Kembali ke menu utama \n";
 }
 
@@ -59,6 +60,9 @@ pilihan = userInput("Pilih : ");
         case 2: 
                 
                 std::cout << "Laporan Stok LCR \n";
+                break;
+        case 3:
+                std::cout << "Tambah Stok Alat LCR \n";
                 break;
         default:
                 std::cout << "Pilihan tidak valid \n";
