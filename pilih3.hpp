@@ -1,6 +1,6 @@
 #ifndef PILIH3_HPP
 #define PILIH3_HPP
 
-pilihan3();
+void pilihan3();
 
 #endif
