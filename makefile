@@ -2,7 +2,7 @@
 TARGET = lcr
 
 # Daftar file sumber
-SRCS = main.cpp menu.cpp input.cpp pilih1.cpp pilih2.cpp pilih3.cpp folder.cpp
+SRCS = main.cpp menu.cpp input.cpp pilih1.cpp pilih2.cpp pilih3.cpp folder.cpp lcr.cpp
 
 # Compiler dan flags
 CXX = g++
