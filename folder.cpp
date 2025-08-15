@@ -35,7 +35,7 @@ std::string c_folder(){
 
 //buat folder stok alat lcr
 std::string folder_lcr(){
-std::string pathBulan = "lib/lcr/stok";
+std::string pathBulan = "lib/LCR/stok";
 
 if(!std::filesystem::exists || !std::filesystem::is_directory){
 std::filesystem::create_directories(pathFolder);
