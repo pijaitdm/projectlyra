@@ -33,6 +33,7 @@ std::string c_folder(){
   return laporan_lcr;
 }
 
+//buat folder stok alat lcr
 void cek_folder(){
 std::string folder_bulan;
 folder_bulan = inputan("Untuk Bulan : ");
