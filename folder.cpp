@@ -41,6 +41,7 @@ if(!std::filesystem::exists || !std::filesystem::is_directory){
 std::filesystem::create_directories(pathFolder);
 }
 else {std::cout << "Membuka Folder ~> " << pathFolder << std::endl;}
+return pathBulan;
 }
 
 
