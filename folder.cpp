@@ -32,4 +32,18 @@ std::string c_folder(){
     }
   return laporan_lcr;
 }
-  
+
+void cek_folder(){
+std::string folder_bulan;
+folder_bulan = inputan("Untuk Bulan : ");
+std::string pathBulan = "lib/lcr/stok";
+
+if(!std::filesystem::exists || !std::filesystem::is_directory){
+std::filesystem::create_directories(pathFolder);
+}
+else {std::cout << "Membuka Folder ~> " << pathFolder << std::endl;}
+}
+
+
+
+
