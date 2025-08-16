@@ -7,6 +7,10 @@
 #include "folder.hpp"
 #include "menu.hpp"
 #include "lcr.hpp"
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2a69b14ea3d6d0444134501ec156917a5bd47904
 
 
 
