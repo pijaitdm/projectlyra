@@ -24,7 +24,12 @@ int userInput(const std::string& pesan){
         if (std::cin.fail()){
             std::cin.clear();
             std::cin.ignore(1000, '\n');
-            std::cout << "\n Inputan tidak Valid! \n";
+            std::cout << "\nInputan tidak valid!\n";
+            continue;
+        }
+         if (user < 0){
+        std::cout << user <<  " bilangan minus, inputan tidak valid\n";
+        continue;
         }
         else {
             return user;
@@ -49,7 +54,13 @@ float floatInput(const std::string& pesan) {
             std::cin.clear();
             std::cin.ignore(1000, '\n');
             std::cout << "\nInputan tidak valid!\n";
-        } else {
+            continue;
+        }
+         if (user < 0){
+        std::cout << user <<  " bilangan minus, inputan tidak valid\n";
+        continue;
+        }
+        else {
             return user;
         }
     }
