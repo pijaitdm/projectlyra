@@ -47,16 +47,14 @@ float floatInput(const std::string& pesan) {
         std::cin >> user;
         if (std::cin.fail()){
             std::cin.clear();
-            std::cin.ignore(0, '\n');
-            std::cout << "\n Inputan tidak Valid! \n";
-            return false;
-        }
-        
-        else {
+            std::cin.ignore(1000, '\n');
+            std::cout << "\nInputan tidak valid!\n";
+        } else {
             return user;
         }
     }
 }
+
 
 
 std::string input_bulan() {
