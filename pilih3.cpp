@@ -6,7 +6,7 @@
 #include "input.hpp"
 #include "folder.hpp"
 #include "menu.hpp"
-
+#include "lcr.hpp"
 
 
 
@@ -59,10 +59,12 @@ pilihan = userInput("Pilih Menu : ");
                 break;
         case 2: 
                 std::cout << "Laporan Stok LCR \n";
+                lihat_stok();
+                hitung_stok();
                 break;
         case 3:
                 std::cout << "Tambah Stok Alat LCR \n";
-                lcr();
+                tambah_stok();
                 break;
         default:
                 std::cout << "Pilihan tidak valid \n";

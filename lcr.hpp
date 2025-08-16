@@ -1,6 +1,7 @@
 #ifndef LCR_HPP
 #define LCR_HPP
 
-void lcr();
-
+void tambah_stok();
+void lihat_stok();
+void hitung_stok();
 #endif

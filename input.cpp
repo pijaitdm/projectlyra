@@ -40,6 +40,24 @@ std::string inputan(const std::string& pesan) {
     return user_input;
 }
 
+float floatInput(const std::string& pesan) {
+    while(true){
+        float user;
+        std::cout << pesan;
+        std::cin >> user;
+        if (std::cin.fail()){
+            std::cin.clear();
+            std::cin.ignore(0, '\n');
+            std::cout << "\n Inputan tidak Valid! \n";
+            return false;
+        }
+        
+        else {
+            return user;
+        }
+    }
+}
+
 
 std::string input_bulan() {
     std::string input_bulan_str;
