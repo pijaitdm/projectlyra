@@ -24,7 +24,11 @@ void membuat_folder_visit() {
         std::cout << "Tanggal kosong\n";
         return;
     }
-
+    int simpan = userInput("Simpan? (1 = ya, 0 = batal): ");
+    if (simpan != 1) {
+        std::cout << "Batal menyimpan.\n";
+        return;
+    }
     // Gabungkan semua input sebagai path folder
     std::string folder_visit = lib() + "/visit/" + tempat + "/" + bulan + "/" + tahun_folder + "/" + tanggal;
 

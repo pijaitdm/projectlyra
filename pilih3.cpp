@@ -17,6 +17,7 @@ std::cout <<  "Menu Laporan : \n";
 std::cout <<  "[1]. Laporan Bulanan LCR \n";
 std::cout <<  "[2]. Laporan Stok alat LCR \n";
 std::cout <<  "[3]. Tambah Stok alat LCR \n";
+std::cout <<  "[4]. Perbarui Stok alat LCR \n";
 std::cout <<  "[0]. Kembali ke menu utama \n";
 }
 
@@ -50,23 +51,27 @@ menu_pilih3();
 int pilihan;
 do{
 
-pilihan = userInput("Pilih Menu : ");
+pilihan = userInput("\nPilih Menu : ");
 
   switch(pilihan){
         case 1: 
-                std::cout << "Laporan Bulanan LCR \n";
+                std::cout << "\nLaporan Bulanan LCR \n";
                 laporan_lcr();
                 batas();
                 break;
         case 2: 
-                std::cout << "Laporan Stok LCR \n";
+                std::cout << "\nLaporan Stok LCR \n";
                 lihat_stok();
-                hitung_stok();
                 break;
         case 3:
-                std::cout << "Tambah Stok Alat LCR \n";
+                std::cout << "\nTambah Stok Alat LCR \n";
                 tambah_stok();
                 break;
+        case 4:
+                std::cout <<"\nPerbarui Stok \n";
+                perbarui_stok();
+                break;
+                
         default:
                 std::cout << "Pilihan tidak valid \n";
                  break;
