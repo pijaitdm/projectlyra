@@ -34,7 +34,7 @@ void pilih_menu() {
 }
 
 void menu() {
-    drawBox("Project LYRA Versi 1");
+    drawBox("Laporan Bengkel v1");
     batas();
     pilih_menu();
     batas();
