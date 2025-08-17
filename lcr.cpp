@@ -19,7 +19,7 @@ void print_status(const std::string& msg, const std::string& path = "", const st
     if (type == "success") {
         std::cout << "✅ " << msg << " --> " << path << "\n";
     } else if (type == "error") {
-        std::cerr << "❌ " << msg << " --> " << path << "\n";
+        std::cerr << "❌ " << msg << std::endl;
     } else if (type == "warn") {
         std::cout << "⚠️ " << msg << " --> " << path << "\n";
     } else {
