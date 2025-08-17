@@ -5,42 +5,43 @@
 #include "folder.hpp"
 
 void membuat_folder_visit() {
+    std::cout << "\n--- 📁 Input UE Visit ---\n";
+
     std::string tahun_folder = tahun(); // buat tahun otomatis
     std::string tempat = inputan("Tempat : ");
     std::string bulan = input_bulan();
 
     if (bulan.empty()) {
-        std::cout << "Kembali ke menu\n";
+        std::cout << "⚠️  Bulan kosong. Kembali ke menu.\n";
         return;
     }
 
     std::string tanggal = inputan("Tanggal : ");
-
-    // Hapus semua '0' di depan
     tanggal.erase(0, tanggal.find_first_not_of('0'));
 
-    // Jika semua karakter nol, tanggal kosong
     if (tanggal.empty()) {
-        std::cout << "Tanggal kosong\n";
+        std::cout << "❌ Tanggal kosong.\n";
         return;
     }
-    int simpan = userInput("Simpan? (1 = ya, 0 = batal): ");
+
+    int simpan = userInput("Konfirmasi simpan [1 = Ya, 0 = Batal] : ");
     if (simpan != 1) {
-        std::cout << "Batal menyimpan.\n";
+        std::cout << "❌ Batal menyimpan.\n";
         return;
     }
-    // Gabungkan semua input sebagai path folder
+
     std::string folder_visit = lib() + "/visit/" + tempat + "/" + bulan + "/" + tahun_folder + "/" + tanggal;
 
     if (!std::filesystem::exists(folder_visit) || !std::filesystem::is_directory(folder_visit)) {
         std::filesystem::create_directories(folder_visit);
-        std::cout << "Membuat --> " << folder_visit << '\n';
+        std::cout << "✅ Folder dibuat --> " << folder_visit << '\n';
     } else {
-        std::cout << "Membuka --> " << folder_visit << '\n';
+        std::cout << "📂 Folder sudah ada --> " << folder_visit << '\n';
     }
 }
 
 void pilihan2() {
-    std::cout << "Inputan UE Visit\n";
+    std::cout << "\n=== ✨ Menu Visit UE ===\n";
     membuat_folder_visit();
 }
+

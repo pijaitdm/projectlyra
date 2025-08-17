@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include "input.hpp"
 #include "folder.hpp"
+
 bool bulanSudahAda(const std::string& file_csv, const std::string& bulan) {
     std::ifstream file(file_csv);
     std::string line;
@@ -18,30 +19,36 @@ bool bulanSudahAda(const std::string& file_csv, const std::string& bulan) {
     return false;
 }
 
+void pilihan1() {
+    std::cout << "\n=== 📊 Input UE Bulanan ===\n";
 
-void pilihan1(){
-const std::string path_lcr = c_folder();
+    const std::string path_lcr = c_folder();
+    std::ofstream file(path_lcr, std::ios::app);
 
-std::ofstream file(path_lcr, std::ios::app);
-  std::string moon  = input_bulan();
-  if (bulanSudahAda(path_lcr, moon)) {
-    std::cout << "Bulan sudah ada di file. kembali ke menu\n";
-    return;
-}
-  if(moon.empty()){
-    std::cout << ",dibatalkan kembali  ke menu \n";
-    file.close();
-    return;
-  }
-  
-  int input_ue = userInput("Masukan UE : ");
-  int simpan = userInput("Simpan? (1 = ya, 0 = batal): ");
-  if (simpan != 1) {
-        std::cout << "Batal menyimpan.\n";
+    std::string moon = input_bulan();
+    if (moon.empty()) {
+        std::cout << "⚠️  Bulan kosong, dibatalkan. Kembali ke menu.\n";
+        file.close();
         return;
     }
-    file << moon << "," << input_ue << std::endl;
-    std::cout << moon << " : " << input_ue << " (berhasil ditambahkan) \n";
 
-file.close();
+    if (bulanSudahAda(path_lcr, moon)) {
+        std::cout << "📁 Bulan sudah ada di file. Kembali ke menu.\n";
+        file.close();
+        return;
+    }
+
+    int input_ue = userInput("Masukkan jumlah UE : ");
+    int simpan = userInput("Konfirmasi simpan [1 = Ya, 0 = Batal] : ");
+    if (simpan != 1) {
+        std::cout << "❌ Batal menyimpan.\n";
+        file.close();
+        return;
+    }
+
+    file << moon << "," << input_ue << std::endl;
+    std::cout << "✅ " << moon << " : " << input_ue << " (berhasil ditambahkan)\n";
+
+    file.close();
 }
+  

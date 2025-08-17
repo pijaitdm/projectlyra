@@ -10,73 +10,63 @@
 
 
 
-
-
-void menu_pilih3(){
-std::cout <<  "Menu Laporan : \n";
-std::cout <<  "[1]. Laporan Bulanan LCR \n";
-std::cout <<  "[2]. Laporan Stok alat LCR \n";
-std::cout <<  "[3]. Tambah Stok alat LCR \n";
-std::cout <<  "[4]. Perbarui Stok alat LCR \n";
-std::cout <<  "[0]. Kembali ke menu utama \n";
-}
-
-void laporan_lcr(){
-
-std::string f_lcr = c_folder();
-  std::ifstream file(f_lcr);
-   if (!file.is_open()) {
-        std::cerr << "Gagal membuka file!\n";
-        return ;
+void laporan_lcr() {
+    std::string f_lcr = c_folder();
+    std::ifstream file(f_lcr);
+    if (!file.is_open()) {
+        std::cerr << "❌ Gagal membuka file: " << f_lcr << "\n";
+        return;
     }
-    
-batas();    
-std::cout << std::left << std::setw(10) << "Bulan" << " | " << "UE" <<std::endl;
-std::string line;
+
+    batas();
+    std::cout << "📊 Laporan Bulanan UE\n";
+    std::cout << std::left << std::setw(10) << "Bulan" << " | " << "UE\n";
+    std::cout << "-------------------------\n";
+
+    std::string line;
     while (std::getline(file, line)) {
         std::stringstream ss(line);
-        std::string kolom_bulan;
-        std::string kolom_angka;
-        
+        std::string kolom_bulan, kolom_angka;
         std::getline(ss, kolom_bulan, ',');
-        std::getline (ss, kolom_angka);
-        std::cout << std::left << std::setw(10)<<kolom_bulan << " | " << kolom_angka << "\n"; //std::setw membuat sama rata
-        }
-file.close();
+        std::getline(ss, kolom_angka);
+        std::cout << std::left << std::setw(10) << kolom_bulan << " | " << kolom_angka << "\n";
+    }
+
+    file.close();
 }
 
-void pilihan3(){
-menu_pilih3();
+void pilihan3() {
+    std::cout << "\n=== 📋 Menu Laporan LCR ===\n";
+    std::cout << "[1] 📊 Laporan Bulanan LCR\n";
+    std::cout << "[2] 📦 Laporan Stok alat LCR\n";
+    std::cout << "[3] ➕ Tambah Stok alat LCR\n";
+    std::cout << "[0] 🔙 Kembali ke menu utama\n";
 
-int pilihan;
-do{
+    int pilihan;
+    do {
+        pilihan = userInput("🔽 Pilih menu [0-3] : ");
 
-pilihan = userInput("\nPilih Menu : ");
-
-  switch(pilihan){
-        case 1: 
-                std::cout << "\nLaporan Bulanan LCR \n";
+        switch (pilihan) {
+            case 1:
+                std::cout << "\n📊 Menampilkan Laporan Bulanan LCR...\n";
                 laporan_lcr();
                 batas();
                 break;
-        case 2: 
-                std::cout << "\nLaporan Stok LCR \n";
-                lihat_stok();
+            case 2:
+                std::cout << "\n📦 Menampilkan Laporan Stok LCR...\n";
+                // (isi laporan stok bisa ditambahkan di sini)
                 break;
-        case 3:
-                std::cout << "\nTambah Stok Alat LCR \n";
-                tambah_stok();
+            case 3:
+                std::cout << "\n➕ Menambah Stok Alat LCR...\n";
+                // (fungsi tambah stok bisa ditambahkan di sini)
                 break;
-        case 4:
-                std::cout <<"\nPerbarui Stok \n";
-                perbarui_stok();
+            case 0:
+                std::cout << "🔙 Kembali ke menu utama.\n";
                 break;
-                
-        default:
-                std::cout << "Pilihan tidak valid \n";
-                 break;
-        case 0:
+            default:
+                std::cout << "⚠️  Pilihan tidak valid. Coba lagi.\n";
                 break;
-  }              
-}while(pilihan != 0);
+        }
+    } while (pilihan != 0);
 }
+

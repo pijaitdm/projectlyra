@@ -1,9 +1,10 @@
 #include <iostream>
 #include <string>
-#include <filesystem>   
+#include <filesystem>
 #include <fstream>
 #include <sstream>
 #include <map>
+#include <iomanip>
 #include "input.hpp"
 #include "folder.hpp"
 
@@ -11,6 +12,19 @@
 bool parse_stok_line(const std::string& line, std::string& nama, float& jumlah) {
     std::istringstream ss(line);
     return std::getline(ss, nama, ',') && ss >> jumlah;
+}
+
+// Output status modular
+void print_status(const std::string& msg, const std::string& path = "", const std::string& type = "info") {
+    if (type == "success") {
+        std::cout << "✅ " << msg << " --> " << path << "\n";
+    } else if (type == "error") {
+        std::cerr << "❌ " << msg << " --> " << path << "\n";
+    } else if (type == "warn") {
+        std::cout << "⚠️ " << msg << " --> " << path << "\n";
+    } else {
+        std::cout << "📁 " << msg << " --> " << path << "\n";
+    }
 }
 
 // Membuat atau membuka file stok
@@ -21,21 +35,21 @@ std::string file_stok() {
     std::string path_stok = folder_stok() + "/" + bulan + ".csv";
 
     if (!std::filesystem::exists(path_stok)) {
-        std::cout << "File belum ada: " << path_stok << "\n";
-        int simpan = userInput("< lanjut membuat tekan [1] atau [0] untuk batal > : ");
+        print_status("File belum ada", path_stok, "warn");
+        int simpan = userInput("Lanjut buat file? [1 = Ya, 0 = Batal] : ");
         if (simpan != 1) {
-            std::cout << "Dibatalkan.\n";
+            print_status("Dibatalkan", "", "error");
             return "";
         }
 
         std::ofstream file(path_stok);
         if (!file) {
-            std::cerr << "Gagal membuat file: " << path_stok << "\n";
+            print_status("Gagal membuat file", path_stok, "error");
             return "";
         }
-        std::cout << "File dibuat ~> " << path_stok << "\n";
+        print_status("File dibuat", path_stok, "success");
     } else {
-        std::cout << "File ditemukan ~> " << path_stok << "\n";
+        print_status("File ditemukan", path_stok);
     }
 
     return path_stok;
@@ -48,16 +62,16 @@ void tambah_stok() {
 
     std::ifstream cek_file(f_stok);
     if (!cek_file.is_open()) {
-        std::cerr << "Gagal membuka file.\n";
+        print_status("Gagal membuka file", f_stok, "error");
         return;
     }
 
     if (cek_file.peek() != std::ifstream::traits_type::eof()) {
-        std::cout << "File sudah berisi data. Lanjut ke pembaruan stok.\n";
+        print_status("File sudah berisi data. Lanjut ke pembaruan stok", f_stok);
         return;
     }
 
-    std::cout << "\nFile kosong. Tambah stok awal:\n";
+    std::cout << "\n--- Tambah Stok Awal ---\n";
     std::map<std::string, float> stok_awal = {
         {"flinkote", floatInput("Flinkote : ")},
         {"noxudol",  floatInput("Noxudol : ")},
@@ -65,15 +79,15 @@ void tambah_stok() {
         {"aerosol",  floatInput("Aerosol : ")}
     };
 
-    int simpan = userInput("Simpan? (1 = ya, 0 = batal): ");
+    int simpan = userInput("Konfirmasi simpan [1 = Ya, 0 = Batal] : ");
     if (simpan != 1) {
-        std::cout << "Batal menyimpan.\n";
+        print_status("Batal menyimpan", "", "error");
         return;
     }
 
     std::ofstream file(f_stok, std::ios::app);
     if (!file) {
-        std::cerr << "Gagal menulis ke file.\n";
+        print_status("Gagal menulis ke file", f_stok, "error");
         return;
     }
 
@@ -81,36 +95,43 @@ void tambah_stok() {
         file << nama << "," << jumlah << "\n";
     }
 
-    std::cout << "✅ Stok awal ditambahkan ke --> " << f_stok << "\n";
+    print_status("Stok awal ditambahkan", f_stok, "success");
 }
 
 // Melihat isi file stok
 void lihat_stok() {
-    std::cout << "Cek laporan stok bulan sebelumnya\n";
+    std::cout << "\n--- Cek Laporan Stok ---\n";
     std::string bulan = input_bulan();
     if (bulan.empty()) return;
 
     std::string path_file = folder_stok() + "/" + bulan + ".csv";
     if (!std::filesystem::exists(path_file)) {
-        std::cout << "File " << bulan << " tidak ditemukan.\n";
+        print_status("File tidak ditemukan", path_file, "error");
         return;
     }
 
     std::ifstream file(path_file);
     if (!file.is_open()) {
-        std::cerr << "Gagal membuka file: " << path_file << "\n";
+        print_status("Gagal membuka file", path_file, "error");
         return;
     }
 
     if (file.peek() == std::ifstream::traits_type::eof()) {
-        std::cout << "File kosong.\n";
+        print_status("File kosong", path_file, "warn");
         return;
     }
 
-    std::cout << "Isi file stok --> " << bulan << ":\n";
+    std::cout << "\n📊 Isi Stok Bulan " << bulan << ":\n";
+    std::cout << std::left << std::setw(15) << "Nama Barang" << std::right << std::setw(10) << "Jumlah\n";
+    std::cout << "------------------------------\n";
+
     std::string line;
     while (std::getline(file, line)) {
-        std::cout << line << "\n";
+        std::string nama;
+        float jumlah;
+        if (parse_stok_line(line, nama, jumlah)) {
+            std::cout << std::left << std::setw(15) << nama << std::right << std::setw(10) << jumlah << "\n";
+        }
     }
 }
 
@@ -118,20 +139,20 @@ void lihat_stok() {
 void perbarui_stok() {
     std::string bulan = input_bulan();
     if (bulan.empty()) {
-        std::cout << "Dibatalkan.\n";
+        print_status("Dibatalkan", "", "error");
         return;
     }
 
     std::string path_file = folder_stok() + "/" + bulan + ".csv";
     if (!std::filesystem::exists(path_file)) {
-        std::cout << "File belum ada. Tambah stok awal...\n";
+        print_status("File belum ada. Tambah stok awal...", path_file, "warn");
         tambah_stok();
         return;
     }
 
     std::ifstream file_in(path_file);
     if (!file_in.is_open()) {
-        std::cerr << "Gagal membuka file: " << path_file << "\n";
+        print_status("Gagal membuka file", path_file, "error");
         return;
     }
 
@@ -141,14 +162,14 @@ void perbarui_stok() {
         std::string nama;
         float jumlah;
         if (!parse_stok_line(line, nama, jumlah)) {
-            std::cerr << "Format rusak di baris: " << line << "\n";
+            print_status("Format rusak di baris", line, "error");
             return;
         }
         stok[nama] = jumlah;
     }
     file_in.close();
 
-    std::cout << "\nMasukkan stok baru yang datang:\n";
+    std::cout << "\n--- Tambah Stok Baru ---\n";
     std::map<std::string, float> tambahan = {
         {"flinkote", floatInput("Flinkote : ")},
         {"noxudol",  floatInput("Noxudol : ")},
@@ -158,14 +179,14 @@ void perbarui_stok() {
 
     for (const auto& [nama, jumlah] : tambahan) {
         if (jumlah < 0) {
-            std::cerr << "Input negatif terdeteksi pada: " << nama << ". Dibatalkan.\n";
+            print_status("Input negatif terdeteksi pada", nama, "error");
             return;
         }
     }
 
-    int simpan = userInput("Simpan pembaruan? (1 = ya, 0 = batal): ");
+    int simpan = userInput("Konfirmasi pembaruan [1 = Ya, 0 = Batal] : ");
     if (simpan != 1) {
-        std::cout << "Batal memperbarui stok.\n";
+        print_status("Batal memperbarui stok", "", "error");
         return;
     }
 
@@ -175,7 +196,7 @@ void perbarui_stok() {
 
     std::ofstream file_out(path_file, std::ios::trunc);
     if (!file_out.is_open()) {
-        std::cerr << "Gagal menulis ke file: " << path_file << "\n";
+        print_status("Gagal menulis ke file", path_file, "error");
         return;
     }
 
@@ -183,6 +204,6 @@ void perbarui_stok() {
         file_out << nama << "," << jumlah << "\n";
     }
 
-    std::cout << "✅ Stok berhasil diperbarui untuk bulan --> " << bulan << "\n";
+    print_status("Stok berhasil diperbarui", bulan, "success");
 }
 
