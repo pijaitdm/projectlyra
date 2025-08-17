@@ -54,11 +54,11 @@ void pilihan3() {
                 break;
             case 2:
                 std::cout << "\n📦 Menampilkan Laporan Stok LCR...\n";
-                // (isi laporan stok bisa ditambahkan di sini)
+                lihat_stok();
                 break;
             case 3:
                 std::cout << "\n➕ Menambah Stok Alat LCR...\n";
-                // (fungsi tambah stok bisa ditambahkan di sini)
+                perbarui_stok();
                 break;
             case 0:
                 std::cout << "🔙 Kembali ke menu utama.\n";
