@@ -22,7 +22,7 @@ std::string file_stok() {
 
     if (!std::filesystem::exists(path_stok)) {
         std::cout << "File belum ada: " << path_stok << "\n";
-        int simpan = userInput("< lanjut tekan [1] atau [0] untuk batal > : ");
+        int simpan = userInput("< lanjut membuat tekan [1] atau [0] untuk batal > : ");
         if (simpan != 1) {
             std::cout << "Dibatalkan.\n";
             return "";
