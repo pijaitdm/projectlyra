@@ -3,7 +3,7 @@
 #include <filesystem>
 #include <fstream>
 #include <sstream>
-#include <map>
+#include <unordered_map>
 #include <iomanip>
 #include "input.hpp"
 #include "folder.hpp"
@@ -72,12 +72,19 @@ void tambah_stok() {
     }
 
     std::cout << "\n--- Tambah Stok Awal ---\n";
-    std::map<std::string, float> stok_awal = {
+    std::unordered_map<std::string, float> stok_awal = {
         {"flinkote", floatInput("Flinkote : ")},
         {"noxudol",  floatInput("Noxudol : ")},
         {"tiner",    floatInput("Tiner : ")},
         {"aerosol",  floatInput("Aerosol : ")}
     };
+
+    for (const auto& [nama, jumlah] : stok_awal) {
+        if (jumlah < 0) {
+            print_status("Input negatif terdeteksi pada", nama, "error");
+            return;
+        }
+    }
 
     int simpan = userInput("Konfirmasi simpan [1 = Ya, 0 = Batal] : ");
     if (simpan != 1) {
@@ -156,7 +163,7 @@ void perbarui_stok() {
         return;
     }
 
-    std::map<std::string, float> stok;
+    std::unordered_map<std::string, float> stok;
     std::string line;
     while (std::getline(file_in, line)) {
         std::string nama;
@@ -170,7 +177,7 @@ void perbarui_stok() {
     file_in.close();
 
     std::cout << "\n--- Tambah Stok Baru ---\n";
-    std::map<std::string, float> tambahan = {
+    std::unordered_map<std::string, float> tambahan = {
         {"flinkote", floatInput("Flinkote : ")},
         {"noxudol",  floatInput("Noxudol : ")},
         {"tiner",    floatInput("Tiner : ")},
